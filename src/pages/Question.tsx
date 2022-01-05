@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {getQuestionById, QuestionInfo} from "../json/QuestionData";
+import {getQuestionById, multipleChoice, multiSelect, QuestionInfo, trueFalse} from "../json/QuestionData";
 import {Container, Typography} from "@mui/material";
 import MultipleChoice from "../components/MultipleChoice";
+import MultiSelect from "../components/MultiSelect";
 
 interface IProps {
     id?: string
@@ -28,8 +29,13 @@ const Question = () => {
                 <Typography variant="h5">{question?.title}</Typography>
 
                 {
-                    question.type === "multipleChoice" &&
+                    [multipleChoice, trueFalse].includes(question.type) &&
                     <MultipleChoice question={question}/>
+                }
+
+                {
+                    question.type === multiSelect &&
+                    <MultiSelect question={question}/>
                 }
 
             </Container>

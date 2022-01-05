@@ -1,3 +1,9 @@
+export const multipleChoice = "multipleChoice";
+export const fillInTheBlank = "fillInTheBlank";
+export const multiSelect = "multiSelect";
+export const followingMatch = "followingMatch";
+export const trueFalse = "trueFalse";
+
 export interface QuestionInfo {
     id: number,
     title: string,
@@ -11,7 +17,7 @@ export interface QuestionInfo {
 export const qList: QuestionInfo[] = [
     {
         id: 1,
-        type: "multipleChoice",
+        type: multipleChoice,
         title: " React is based on ?",
         options: [
             "Modules", "Services", "Components", "Microservices"
@@ -21,7 +27,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 2,
-        type: "gaps",
+        type: fillInTheBlank,
         title: "How many elements does a React component return __________ ",
         options: [],
         ans: ["Single"],
@@ -29,7 +35,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 3,
-        type: "multiSelect",
+        type: multiSelect,
         title: "Props are in other components? ",
         options: [
             "Injected", "methods", "Props", "State"
@@ -39,7 +45,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 4,
-        type: "match",
+        type: followingMatch,
         title: "Match the following",
         options: [
             "js", "ts"
@@ -50,7 +56,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 5,
-        type: "tf",
+        type: trueFalse,
         title: "Babel is js Compiler",
         options: [
             "true", "false",
@@ -60,7 +66,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 6,
-        type: "multipleChoice",
+        type: multipleChoice,
         title: "HTML uses?",
         options: [
             "defined tags", "specified tagst", "fixed tag", "All above"
@@ -70,7 +76,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 7,
-        type: "gaps",
+        type: fillInTheBlank,
         title: "HTML Block is known as ___________ ?",
         options: [
             "body", "tag", "Attribute", "Element"
@@ -80,7 +86,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 8,
-        type: "multiSelect",
+        type: multiSelect,
         title: "what other tag makes text bold ?",
         options: [
             "<fat>", "<strong>", "<black>", "<b>"
@@ -90,7 +96,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 9,
-        type: "tf",
+        type: trueFalse,
         title: "display a picture in a HTML page using  img?",
         options: [
             "true", "false",
@@ -100,7 +106,7 @@ export const qList: QuestionInfo[] = [
     },
     {
         id: 10,
-        type: "multipleChoice",
+        type: multipleChoice,
         title: "What should be the first tag in any HTML document?",
         options: [
             "head", "title", "html", "document"

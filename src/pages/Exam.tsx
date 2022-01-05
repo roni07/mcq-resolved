@@ -1,8 +1,13 @@
 import React from 'react';
-import {useHistory, useLocation} from "react-router-dom";
+import {Route, Switch, useHistory, useLocation} from "react-router-dom";
 import {UserInfo} from "./Home";
 import {getQuestionByLang} from "../json/QuestionData";
-import {Chip, Container, List, ListItem, Typography} from "@mui/material";
+import {Chip, Container, Typography} from "@mui/material";
+import Question from "./Question";
+
+interface IProps {
+    id?: string
+}
 
 const Exam = () => {
 
@@ -11,15 +16,22 @@ const Exam = () => {
     const {state} = useLocation();
     const userInfo = state as UserInfo;
 
-    const filteredQuestion = getQuestionByLang(userInfo.lang);
+    const filteredQuestion = getQuestionByLang(userInfo.lang)
 
     const routeToQuestion = (id: number) => {
-        history.push(`/question/${id}`);
+        history.push(`/exam/${id}`, userInfo);
     }
 
     return (
         <Container>
-            <Typography variant="h4" sx={{margin: "20px 0"}}>Exam</Typography>
+            <Typography
+                onClick={() => {
+                    history.push(`/exam`, userInfo);
+                }}
+                variant="h4" sx={{margin: "20px 0"}}
+            >
+                {userInfo.lang} Exam
+            </Typography>
 
             {
                 filteredQuestion.map((q, i) => (
@@ -32,22 +44,13 @@ const Exam = () => {
                 ))
             }
 
-            <List>
-                {
-                    filteredQuestion.map((q, i) => (
-                        <ListItem
-                            key={q.id}
-                            onClick={() => routeToQuestion(q.id)}
-                            sx={{
-                                cursor: "pointer"
-                            }}
-                        >
-                            <span style={{fontSize: "20px", marginRight: "10px"}}>{i + 1}.</span>
-                            <span style={{fontSize: "20px"}}>{q.title}</span>
-                        </ListItem>
-                    ))
-                }
-            </List>
+            <Switch>
+                <Route exact path="/exam">
+                    <h3>Please click on a question number.</h3>
+                </Route>
+                <Route path="/exam/:id" component={Question}/>
+            </Switch>
+
         </Container>
     );
 };
