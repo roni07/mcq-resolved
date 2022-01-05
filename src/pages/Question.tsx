@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import React from 'react';
 import {
     fillInTheBlank,
     followingMatch,
-    getQuestionById,
     multipleChoice,
     multiSelect,
     QuestionInfo,
@@ -15,21 +13,14 @@ import MultiSelect from "../components/MultiSelect";
 import FollowingMatch from "../components/FollowingMatch";
 
 interface IProps {
-    id?: string
+    handleAns(option: string, checked?: boolean): void,
+
+    isAns(option: string): boolean,
+
+    question: QuestionInfo
 }
 
-const Question = () => {
-
-    const {id} = useParams<IProps>();
-
-    const [question, setQuestion] = useState<QuestionInfo>();
-
-    useEffect(() => {
-
-        const questionById = getQuestionById(Number(id));
-        setQuestion(questionById);
-
-    }, [id])
+const Question: React.FC<IProps> = ({handleAns, isAns, question}) => {
 
     return (
         question ? (
@@ -39,17 +30,17 @@ const Question = () => {
 
                 {
                     [multipleChoice, trueFalse, fillInTheBlank].includes(question.type) &&
-                    <MultipleChoice question={question}/>
+                    <MultipleChoice handleAns={handleAns} isAns={isAns} question={question}/>
                 }
 
                 {
                     question.type === multiSelect &&
-                    <MultiSelect question={question}/>
+                    <MultiSelect handleAns={handleAns} isAns={isAns} question={question}/>
                 }
 
                 {
                     question.type === followingMatch &&
-                    <FollowingMatch question={question}/>
+                    <FollowingMatch handleAns={handleAns} isAns={isAns} question={question}/>
                 }
 
             </Container>

@@ -3,14 +3,18 @@ import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
 import {QuestionInfo} from "../json/QuestionData";
 
 interface IProps {
+    handleAns(option: string): void,
+
+    isAns(option: string): boolean,
+
     question: QuestionInfo
 }
 
-const MultipleChoice: React.FC<IProps> = ({question}) => {
+const MultipleChoice: React.FC<IProps> = ({handleAns, isAns, question}) => {
     return (
         <RadioGroup
             name="radio-buttons-group"
-            onChange={() => console.log()}
+            onChange={(e) => handleAns(e.target.value)}
         >
             {
                 question.options.map(op => (
@@ -18,7 +22,7 @@ const MultipleChoice: React.FC<IProps> = ({question}) => {
                         key={op}
                         value={op}
                         control={<Radio
-                            // checked={true}
+                            checked={isAns(op)}
                         />}
                         label={op}
                     />

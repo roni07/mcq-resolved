@@ -3,17 +3,25 @@ import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 import {QuestionInfo} from "../json/QuestionData";
 
 interface IProps {
+    handleAns(option: string, checked: boolean): void,
+
+    isAns(option: string): boolean,
+
     question: QuestionInfo
 }
 
-const MultiSelect: React.FC<IProps> = ({question}) => {
+const MultiSelect: React.FC<IProps> = ({handleAns, isAns, question}) => {
 
     return (
         <FormGroup>
             {
                 question.options.map(op => (
                     <FormControlLabel
-                        control={<Checkbox/>}
+                        key={op}
+                        control={<Checkbox
+                            checked={isAns(op)}
+                            onChange={(e) => handleAns(op, e.target.checked)}
+                        />}
                         label={op}
                     />
                 ))
