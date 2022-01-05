@@ -18,7 +18,7 @@ export const qList: QuestionInfo[] = [
     {
         id: 1,
         type: multipleChoice,
-        title: " React is based on ?",
+        title: " React is based on?",
         options: [
             "Modules", "Services", "Components", "Microservices"
         ],
@@ -28,8 +28,8 @@ export const qList: QuestionInfo[] = [
     {
         id: 2,
         type: fillInTheBlank,
-        title: "How many elements does a React component return __________ ",
-        options: [],
+        title: "How many elements does a React component return __________?",
+        options: ["Single", "Both", "Double", "Multiple"],
         ans: ["Single"],
         lang: "React"
     },
@@ -57,7 +57,7 @@ export const qList: QuestionInfo[] = [
     {
         id: 5,
         type: trueFalse,
-        title: "Babel is js Compiler",
+        title: "Babel is js Compiler?",
         options: [
             "true", "false",
         ],

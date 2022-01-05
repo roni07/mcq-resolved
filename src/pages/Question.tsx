@@ -1,9 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {getQuestionById, multipleChoice, multiSelect, QuestionInfo, trueFalse} from "../json/QuestionData";
+import {
+    fillInTheBlank,
+    followingMatch,
+    getQuestionById,
+    multipleChoice,
+    multiSelect,
+    QuestionInfo,
+    trueFalse
+} from "../json/QuestionData";
 import {Container, Typography} from "@mui/material";
 import MultipleChoice from "../components/MultipleChoice";
 import MultiSelect from "../components/MultiSelect";
+import FollowingMatch from "../components/FollowingMatch";
 
 interface IProps {
     id?: string
@@ -29,13 +38,18 @@ const Question = () => {
                 <Typography variant="h5">{question?.title}</Typography>
 
                 {
-                    [multipleChoice, trueFalse].includes(question.type) &&
+                    [multipleChoice, trueFalse, fillInTheBlank].includes(question.type) &&
                     <MultipleChoice question={question}/>
                 }
 
                 {
                     question.type === multiSelect &&
                     <MultiSelect question={question}/>
+                }
+
+                {
+                    question.type === followingMatch &&
+                    <FollowingMatch question={question}/>
                 }
 
             </Container>

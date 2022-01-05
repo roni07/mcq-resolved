@@ -22,6 +22,10 @@ const Exam = () => {
         history.push(`/exam/${id}`, userInfo);
     }
 
+    const handleAns = () => {
+        console.log("hello");
+    }
+
     return (
         <Container>
             <Typography
