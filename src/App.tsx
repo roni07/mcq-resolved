@@ -7,7 +7,7 @@ import Result from "./pages/Result";
 
 const App = () => {
     return (
-        <div className="App">
+        <div className="App" data-testid="app">
             <BrowserRouter>
                 <Switch>
                     <Route path="/" exact={true} component={Home}/>

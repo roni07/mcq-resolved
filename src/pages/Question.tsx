@@ -24,7 +24,7 @@ const Question: React.FC<IProps> = ({handleAns, isAns, question}) => {
 
     return (
         question ? (
-            <Container>
+            <Container data-testid="question">
                 <Typography variant="h4" sx={{margin: "20px 0"}}>Question</Typography>
                 <Typography variant="h5">{question?.title}</Typography>
 
